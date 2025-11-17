@@ -10,37 +10,36 @@
     --font-mona: 'Mona Sans', system-ui, sans-serif;
     --font-ibm-plex: 'IBM Plex Sans', system-ui, sans-serif;
     --font-manrope: 'Manrope', system-ui, sans-serif;
+
+    /* Color tokens */
+    --background: 0 0% 4%;
+    --foreground: 0 0% 100%;
+    --primary: 210 100% 56%;
+    --primary-glow: 210 100% 70%;
+    --secondary: 210 45% 20%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 50%;
+    --border: 210 100% 56%;
+    --input: 0 0% 15%;
   }
 
-  html {
-    font-family: var(--font-sans);
-    font-feature-settings: "rlig" 1, "calt" 1;
-  }
-
-  body {
-    @apply antialiased;
-  }
+  html { font-family: var(--font-sans); font-feature-settings: "rlig" 1, "calt" 1; }
+  body { @apply antialiased bg-[hsl(var(--background))] text-[hsl(var(--foreground))]; }
 }
 
-/* Custom utility classes for shadcn/ui patterns */
+/* Utilities */
 @layer utilities {
-  .animate-in {
-    animation-name: animateIn;
-    animation-duration: 350ms;
-    --tw-enter-opacity: initial;
-    --tw-enter-scale: initial;
-    --tw-enter-rotate: initial;
-    --tw-enter-translate-x: initial;
-    --tw-enter-translate-y: initial;
-  }
-
-  .animate-out {
-    animation-name: animateOut;
-    animation-duration: 350ms;
-    --tw-exit-opacity: initial;
-    --tw-exit-scale: initial;
-    --tw-exit-rotate: initial;
-    --tw-exit-translate-x: initial;
-    --tw-exit-translate-y: initial;
-  }
+  .text-gradient { background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--primary-glow))); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .tech-lines { background-image: linear-gradient(to bottom, hsla(var(--primary),0.15) 1px, transparent 1px); background-size: 100% 40px; opacity: .3; }
+  .tech-grid { background-image: linear-gradient(hsla(var(--primary),0.1) 1px, transparent 1px), linear-gradient(90deg, hsla(var(--primary),0.1) 1px, transparent 1px); background-size:50px 50px; opacity: .2; }
+  .shadow-glow { box-shadow: 0 0 40px hsl(210 100% 56% / 0.4); }
+  .shadow-card { box-shadow: 0 8px 32px hsl(210 100% 56% / 0.2); }
+  .shadow-button { box-shadow: 0 8px 24px hsl(210 100% 56% / 0.3); }
+  .btn-primary { background-color: hsl(var(--primary)); color: white; padding: .875rem 1.25rem; border-radius: .75rem; font-weight: 600; transition: all .3s cubic-bezier(0.4,0,0.2,1); }
+  .btn-primary:hover { filter: drop-shadow(0 0 24px hsl(210 100% 56% / .6)); }
+  .btn-outline { border: 1px solid hsl(var(--border)); color: hsl(var(--primary)); padding: .875rem 1.25rem; border-radius: .75rem; font-weight: 600; background: transparent; transition: all .3s cubic-bezier(0.4,0,0.2,1); }
+  .btn-outline:hover { background-color: hsla(var(--primary),0.08); }
+  .card { background-color: hsl(0 0% 8%); border: 1px solid hsla(var(--primary),0.2); border-radius: .75rem; }
+  .bg-input { background-color: hsl(var(--input)); }
+  .text-muted-foreground { color: hsl(var(--muted-foreground)); }
 }
